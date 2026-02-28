@@ -1,0 +1,139 @@
+<!DOCTYPE html>                                                                
+<html lang="es">                <!-- idioma usado-->                                                            
+<head>                          <!-- da instrucciones al navegador sobre como comportarse y las herramientas que necesita-->                                                             
+    <meta charset="UTF-8">      <!-- formato para que el pc reconozca los idiomas y simbolos-->                                                   
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">    <!-- es para que la pagin a sea responsiva-->  
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">   <!--Importa Boostrap desde internet, para usar sus clases y que la pagina se vea profesional-->
+    
+    <link rel="stylesheet" href="assets/css/estilos.css">       <!-- trae el estilo que se usa en las paginas-->  
+
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top border-bottom border-secondary">     <!-- trae el estilo que se usa en las paginas-->        
+        <div class="container">                                                                              <!-- es el contenedor, evitando que el contenido del menu no quede pegado en las orillas-->       
+            <a class="navbar-brand fw-bold" href="index.html">SEKHMET</a>                                    <!-- corresponde al logo-->                         
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">  <!-- es el boton hamburguesa para los celulares-->    
+                <span class="navbar-toggler-icon"></span>                                                           
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">                               <!-- contenedor plegable, donde queda escondido la info de hamburguesa-->                                                      
+                <ul class="navbar-nav ms-auto">                                                 <!-- lista de enlaces en la barra de navegacion-->                                                                 
+                    <li class="nav-item"><a class="nav-link active" href="#">Inicio</a></li>     <!-- el # hace referencia a la misma pagina-->                    
+                    <li class="nav-item"><a class="nav-link" href="videojuegos_bootstrap.html">Videojuegos</a></li> 
+                    <li class="nav-item"><a class="nav-link" href="animes_bootstrap.html">Anime</a></li> 
+                    <li class="nav-item"><a class="nav-link" href="ventas_bootstrap.html">Tienda</a></li>              
+                    <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>                 <!-- el # hace referencia a la misma pagina--> 
+                </ul>
+            </div>
+        </div>
+    </nav>  
+
+    <header id="heroCarousel" class="carousel slide" data-bs-ride="carousel">          <!-- contenedor principal del carrusel-->                             
+        <div class="carousel-indicators">                                                                           
+            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active"></button>      
+            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1"></button>                     
+            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2"></button>                     
+        </div>
+
+        <div class="carousel-inner">                                                                                
+            <div class="carousel-item active" data-bs-interval="3000">                                              
+                <img src="assets/imagenes/lizz.png" class="d-block w-100" alt="Sekhmet Inicio">                                   
+                <div class="carousel-caption">                                                                      
+                    <h2 class="fw-bold">Bienvenidos a Sekhmet</h2>                                                  
+                    <p class="d-none d-md-block">Tu portal favorito de gaming y cultura anime.</p>                  
+                </div>
+            </div>
+            <div class="carousel-item" data-bs-interval="3000">                                                      
+                <img src="assets/imagenes/PortadaVideoJuegos.png" class="d-block w-100" alt="Sekhmet Videojuegos">
+                <div class="carousel-caption">
+                    <h2 class="fw-bold">Zona de Videojuegos</h2>
+                    <p class="d-none d-md-block">Estrategias y análisis de combate.</p>
+                </div>
+            </div>
+            <div class="carousel-item" data-bs-interval="3000">                                                    
+                <img src="assets/imagenes/PortadaAnime.jpg" class="d-block w-100" alt="Sekhmet Anime">
+                <div class="carousel-caption">
+                    <h2 class="fw-bold">Universo Anime</h2>
+                    <p class="d-none d-md-block">Reseñas de tus series favoritas.</p>
+                </div>
+            </div>
+        </div>
+
+        <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">   
+            <span class="carousel-control-prev-icon"></span>                                                        
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">    
+            <span class="carousel-control-next-icon"></span>                                                        
+        </button>
+    </header>
+
+    <main class="container my-5 text-center">                                   <!-- es el contenido principal centrado-->                                                             
+        <h1 class="display-5 fw-bold text-info mb-4">Explora el Contenido</h1>  <!-- titulo principal, centrado, de color simialr al celeste-->                                      
+        <div class="row g-4 justify-content-center">                                                                
+            <div class="col-12 col-md-5">                                       <!--en celulares se vera una sola columna y en tablet dos clumnas a cada lado-->                                                                  
+                <div class="card bg-dark text-light h-100 p-4 shadow">          <!-- fondo oscuro, con texto gris, donde las tarjetas tienen el mismo alto, y con una sombra para que parezca que sea 3d-->                                             
+                    <h3>VIDEOJUEGOS</h3>                                        <!-- informacion correspondiente a video juegos con su boton para acceder-->                                    
+                    <p>Análisis de juegos, desde clásicos hasta novedades.</p>                                      
+                    <a href="videojuegos_bootstrap.html" class="btn btn-primary mt-3">Ver Videojuegos</a>           
+                </div>
+            </div>
+            <div class="col-12 col-md-5">                                       <!-- misma configuracion que en video juegos, pero para animes-->                                                         
+                <div class="card bg-dark text-light h-100 p-4 shadow">                                             
+                    <h3>ANIME</h3>                                                                                  
+                    <p>Reseñas y recomendaciones del mundo del anime.</p>                                           
+                    <a href="animes_bootstrap.html" class="btn btn-primary mt-3">Ver Anime</a>                      
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <section class="container mt-5">                                            <!-- contenedor para las novedades para que js lo llene-->                                             
+        <h2 class="text-center text-info mb-4">Últimas Novedades</h2>           <!-- se usa la misma configuracion del texto -->
+        <div id="novedades-dinamicas" class="row justify-content-center g-4">   <!-- texto justificado-->
+            </div>
+    </section>
+
+
+    <footer id="contacto" class="bg-dark text-center py-5 border-top border-secondary mt-5">
+        <div class="container">
+            <div class="row justify-content-center mb-5"> 
+                <div class="col-12 col-md-8 col-lg-6"> 
+                    <div class="card bg-dark border-info text-light p-4 shadow"> 
+                        <h3 class="text-info mb-4">¡Únete a la Comunidad!</h3> 
+                        
+                        <form id="form-colaboradores"> 
+                            <div class="mb-3 text-start"> 
+                                <label for="nombre" class="form-label">Nombre o Nickname</label> <!-- informacion donde sale el nombre, la otra linea es para que se pueda escribir-->
+                                <input type="text" class="form-control bg-dark text-white border-secondary" id="nombre" required placeholder="Tu nombre"> 
+                            </div>
+                            <div class="mb-3 text-start">
+                                <label for="correo" class="form-label">Correo Electrónico</label> <!-- mismo principio que en nombre-->
+                                <input type="email" class="form-control bg-dark text-white border-secondary" id="correo" required placeholder="tu@email.com"> 
+                            </div>
+                            <div class="mb-3 text-start"> 
+                                <label for="interes" class="form-label">¿Cómo quieres participar?</label> <!-- oregunta de participacion-->
+                                <select class="form-select bg-dark text-white border-secondary" id="interes"> 
+                                    <option value="comentarista">Ser comentarista de Anime</option>         <!-- opcion para poder elergir-->
+                                    <option value="colaborador">Colaborar con reseñas de juegos</option>    <!-- opcion para poder elergir-->
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-primary w-100">Enviar Solicitud</button>   <!-- boton que permite enviar la solicitud con js-->
+                        </form>
+
+                        <div id="mensaje-exito" class="alert alert-success mt-3 d-none">                    <!-- alerta usando el nick o nombre de envio exitoso-->
+                            ¡Gracias! Tu solicitud ha sido enviada. 
+                        </div>
+                    </div>
+                </div>
+            </div> <hr class="border-secondary my-4">
+            <p class="mb-1">© 2026 Videojuegos <strong>Sekhmet</strong></p>
+            <p>Contacto: <a href="mailto:lili.zapata@duocuc.cl" class="text-info text-decoration-none">lili.zapata@duocuc.cl</a></p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>  <!--esta linea es importante para que el menu de hamburguesa se abra o para que los modales se vean en la pantalla-->                             
+    <script src="assets/js/main.js"></script>           <!--es el encargado de los eventos que estan en la pagina-->
+    <script src="assets/js/home.js"></script>           <!--encargado de buscar en las listas de anime y ponerlos automaticamente en html, para no tener que escribirlo manualmente-->                                                                                                        
+</body>
+</html>

@@ -1,0 +1,319 @@
+/* =========================================================
+              Videojuegos y Anime Sekhmet 
+========================================================= */
+
+/* 1) CONFIGURACIÓN BASE */
+* { 
+    box-sizing: border-box;       /* Incluye el grosor del borde y el relleno dentro del tamaño total del cuadro */
+}
+
+html { 
+    scroll-behavior: smooth;      /* Hace que el movimiento al hacer clic en enlaces internos sea suave, no brusco */
+    height: 100%;                 /* Define que el contenedor principal use todo el alto del navegador */
+}
+
+body {
+    margin: 0;                    /* Elimina los márgenes por defecto del navegador */
+    padding: 0;                   /* Elimina el relleno por defecto */
+    min-height: 100vh;            /* Garantiza que el cuerpo mida al menos el alto de la pantalla */
+    background-color: #0B1220;    /* Color de fondo oscuro de respaldo */
+    background-image:             /* Crea un degradado doble: uno oscuro para legibilidad y otro de colores (violeta a azul) */
+        /* Capa de oscurecimiento sutil */
+        linear-gradient(180deg, rgba(11, 18, 32, 0.5), rgba(11, 18, 32, 0.5)), 
+        /* DEGRADADO VERTICAL: Azul arriba, Morado profundo abajo */
+        linear-gradient(180deg, #4A90E2 0%, #6D28ED 100%);
+    background-attachment: fixed;  /* Mantiene el fondo quieto mientras se mueve pantalla */
+    background-size: cover;        /* Ajusta el fondo para cubrir toda la pantalla */
+    background-repeat: no-repeat;  /* Evita que el fondo se duplique */
+    background-position: center;   /* Centra la imagen/degradado de fondo */
+    color: #B6C0DD;                /* Color de texto principal (evita sensibilidad a la luz) */
+    font-family: system-ui, -apple-system, sans-serif;     /* Usa la fuente del sistema para mayor rapidez */
+    line-height: 1.6;              /* Espaciado entre líneas para mejor lectura */
+}
+
+/* 2) ESTRUCTURA DE LA PÁGINA (LAYOUT) */
+.layout {
+    display: grid;                  /* Activa el modo rejilla para organizar las partes de la web */
+    grid-template-columns: 1fr;     /* Define una sola columna (ideal para celulares) */
+    grid-template-areas:            /* Indica el orden visual: primero el menú y luego el contenido */
+        "nav"
+        "main";                     
+}
+
+.sidebar { 
+    grid-area: nav;                     /* Asigna este bloque al espacio "nav" definido en el layout */
+    background: rgba(15, 23, 42, 0.9);  /* Fondo oscuro con un 10% de transparencia */
+    padding: 1.5rem;                    /* Espacio interno para que el menú no toque los bordes */
+    text-align: center;                 /* Alinea los textos del menú al centro */
+    border-bottom: 1px solid #2B3753;   /* Línea inferior muy delgada para separar el menú del resto */
+    transition: all 0.5s ease;          /* Hace que cualquier cambio de color sea lento y agradable */
+}
+
+/* Efecto para la barra lateral completa */
+.sidebar:hover {
+    background: rgba(25, 33, 52, 0.95) !important; /* Oscurece un poquito el menú cuando pasas el cursor */
+    border-bottom: 1px solid #8B5CF6;              /* Cambia el color de la línea a un morado suave */
+}
+
+.content, .main { 
+    grid-area: main;               /* Asigna este bloque al espacio "main" del layout */
+    padding: 1.5rem;               /* Margen interno para que el contenido "respire" */
+    display: flex;                 /* Activa el modo flexible para alinear cosas fácilmente */
+    flex-direction: column;        /* Apila los elementos (título, fotos, texto) hacia abajo */
+    align-items: center;           /* Centra todos los elementos de forma horizontal */
+    text-align: center;            /* Centra el texto dentro de los párrafos */
+    width: 100%;                   /* Obliga al contenido a ocupar todo el ancho disponible */
+}
+
+/* 3) TARJETAS Y CUADROS DE INFORMACIÓN movil */
+.cards {
+    display: grid;                 /* Usa rejilla interna para las tarjetas de anime/juegos */
+    grid-template-columns: 1fr;    /* Una sola tarjeta por fila en móviles */
+    gap: 1.5rem;                   /* Espacio de separación entre tarjetas */
+    width: 100%;                   /* El contenedor de tarjetas ocupa todo el ancho del contenido */
+    max-width: 100%;               /* No permite que se desborde */             
+}
+
+.card {
+    background: #111827;           /* Fondo gris muy oscuro para la tarjeta */
+    border: 1px solid #2B3753;     /* Borde sutil */
+    border-radius: 1rem;           /* Bordes redondeados */
+    padding: 1.2rem;               /* Espacio interno */
+    cursor: pointer;               /* Cambia el cursor a "mano" para indicar que es clickeable */
+    transition: transform 0.2s ease; /* Suaviza la animación de cambio de tamaño */
+}
+
+.card:hover {
+    border-color: #8B5CF6 !important; /* El borde brilla suavemente al pasar el mouse */
+}
+
+.card__img {
+    width: 100%;               /* La imagen ocupa todo el ancho de la tarjeta */
+    height: 180px;             /* Altura fija para que todas las tarjetas se vean iguales */
+    object-fit: cover;         /* Recorta la imagen para que no se estire feo */
+    border-radius: 0.6rem;     /* Redondea las esquinas de la imagen */
+}
+
+.card-info { 
+    display: none;             /* Oculta la información detallada por defecto */
+    margin-top: 1rem;          /* Espacio arriba del texto oculto */
+}
+
+/* Lógica para abrir tarjeta con JS */
+.card.open .card-info { 
+    display: block;           /* Muestra el texto cuando la tarjeta está abierta */
+}
+
+.card.open .card__img {
+    height: auto;             /* Permite que la imagen tome su altura natural al abrirse */
+    max-height: 400px;        /* Limita el crecimiento máximo */
+    object-fit: contain;      /* Muestra la imagen completa sin recortarla al abrirse */
+    background: #000;         /* Fondo negro por si la imagen es pequeña */
+}
+
+/* 4) BOTONES CON DISEÑO "GHOST" (PARA FOTOSENSIBILIDAD) */
+.btn-primary {
+    display: inline-block;       /* Permite que el botón tenga márgenes y tamaños propios */
+    background-color: transparent !important; /* Fondo hueco para que no emita luz blanca o azul fuerte */
+    border: 1px solid #6d44b8 !important;     /* El borde le da la forma de botón */
+    color: #b3a2c7 !important;               /* Letras en lavanda suave, fáciles de leer */
+    padding: 0.8rem 1.5rem;      /* Tamaño del botón (alto y ancho) */
+    border-radius: 0.5rem;       /* Esquinas suavizadas */
+    text-decoration: none;       /* Quita la línea de subrayado típica de los links */
+    font-weight: bold;           /* Resalta el texto del botón */
+    margin-top: 1rem;            /* Separa el botón del texto de arriba */
+    transition: all 0.3s ease;   /* Animación suave para cuando el botón cambia de color */
+}
+
+.btn-primary:hover {
+    background-color: #4c2d8a !important; /* El botón se llena de color solo al pasar el cursor */
+    color: #ffffff !important;           /* Las letras cambian a blanco para resaltar */
+    transform: translateY(-2px);         /* El botón sube un poquito, dando sensación de interacción */
+}
+
+/* 5) TIPOGRAFÍA Y COLORES DE TEXTO */
+.text-info, h1, h3, h5, .card-title, .modal-title {
+    color: #9283a8 !important;   /* Morado ceniza para títulos: resalta sin lastimar la vista */
+}
+
+.modal-body p, .card-text, p, li {
+    color: #a39eb0 !important;   /* Gris azulado para el texto largo: el más cómodo para leer mucho tiempo */
+}
+
+/* 6) NAVEGACIÓN */
+.nav__list {
+    display: flex;               /* Activa Flexbox para los enlaces */
+    flex-direction: column;      /* Enlaces en lista vertical para móviles */
+    gap: 0.8rem;                 /* Espacio entre cada enlace */
+    padding: 0;                  /* Quita el relleno de lista */
+    list-style: none;            /* Quita los puntos de la lista */
+}
+
+.nav__list a {
+    color: #5CB6E5;              /* Color azul claro para los links */
+    text-decoration: none;       /* Quita el subrayado */
+    font-weight: bold;           /* Letras en negrita */
+    transition: all 0.3s ease; /* Transición para los links */
+}
+
+/* 7) Efecto para los enlaces del menú individualmente */
+.nav__list a:hover {
+    color: #8B5CF6;           /* Cambia de azul a violeta */
+    letter-spacing: 1px;      /* Las letras se separan un poquito */
+}
+
+/* 8) ===== COMPONENTES DE LA PÁGINA DE INICIO (INDEX) ===== */
+
+.hero-container {
+    width: 100%;                 /* Contenedor de ancho completo */
+    display: flex;               /* Centra la imagen usando Flexbox */
+    justify-content: center;     /* Alinea al centro horizontalmente */
+    padding: 1rem 0;             /* Espacio arriba y abajo */
+}
+
+.hero-img {
+    width: 100%;                           /* Se adapta al ancho del celular */
+    max-width: 500px;                      /* En computadoras no crece más de 500px */
+    height: auto;                          /* Mantiene la proporción */
+    border-radius: 1.5rem;                 /* Bordes muy redondeados */
+    display: block;                        /* Elimina espacios extra debajo de la imagen */
+    margin: 0 auto;                        /* Centrado extra de seguridad */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); /* Sombra elegante para dar volumen */
+}
+
+.category-grid {
+    display: grid;                         /* Rejilla para las categorías del inicio */
+    grid-template-columns: 1fr;            /* Una columna en móvil */
+    gap: 1.5rem;                           /* Espacio entre cajas */
+    width: 100%;                           /* Ancho completo */
+    margin-top: 2rem;                     /* Separación con la imagen superior */
+}
+
+/* 9) Botón llamativo para las categorías */
+.btn-primary {
+    display: inline-block;       /* Permite aplicar padding y márgenes correctamente */
+    background: #8B5CF6;         /* Fondo violeta */
+    color: #B6C0DD !important;   /* Texto gris forzado */
+    padding: 0.8rem 1.5rem;      /* Tamaño del botón */
+    border-radius: 0.5rem;       /* Bordes redondeados */
+    text-decoration: none;       /* Quita subrayado */
+    font-weight: bold;           /* Texto resaltado */
+    margin-top: 1rem;            /* Espacio arriba */
+    transition: background 0.3s ease; /* Animación suave para el color */
+}
+
+a.btn-primary:hover {
+    background: #7c3aed !important; /* Fondo violeta más oscuro */
+    color: #5CB6E5 !important;      /* Letras cambian a azul claro */
+    transform: translateY(-2px);    /* El botón sube un poquito */
+}
+
+/* 10) FOOTER */
+.footer { 
+    padding: 2rem;                       /* Mucho espacio interno */
+    text-align: center;                  /* Centra los créditos y contacto */
+    background: rgba(15, 23, 42, 0.9);   /* Fondo igual al menú */
+    border-top: 1px solid #2B3753;       /* Línea divisoria superior */
+    margin-top: 2rem;                    /* Separa el footer del contenido anterior */
+}
+
+/* 11) CORRECCIÓN DE MODALES */
+
+/* Fondo oscuro y borde morado para la ventana (Modal) */
+.modal-content {
+    background-color: #111827 !important; 
+    border: 1px solid #8B5CF6 !important; 
+    border-radius: 1rem !important;
+}
+
+/* Color del título del modal */
+.modal-title {
+    color: #9283a8 !important; 
+    font-weight: bold;
+}
+
+/* Color de los textos (Descripción y Opinión) */
+.modal-body, .modal-body p, .modal-body strong {
+    color: #a39eb0 !important; 
+}
+
+/* Líneas que separan el título y el pie del modal */
+.modal-header, .modal-footer {
+    border-color: #2B3753 !important;
+}
+
+/* Cambia la X de cerrar a blanco para que se vea */
+.btn-close {
+    filter: invert(1) grayscale(1) brightness(2); 
+}
+
+/* 12) AJUSTES ESPECÍFICOS PARA EL CARRUSEL*/
+
+/* Forzamos que todas las imágenes del carrusel tengan la misma altura */
+#heroCarousel .carousel-item img {
+    height: 500px; /* Altura ideal para que se vea profesional en PC */
+    object-fit: cover; /* Clave: recorta la imagen para llenar el espacio sin deformarla */
+    object-position: center; /* Centra el recorte para no perder el punto focal */
+}
+
+/* Ajuste de altura para celulares (Responsividad) */
+@media screen and (max-width: 768px) {
+    #heroCarousel .carousel-item img {
+        height: 300px; /* Más bajito en móviles para que no tape toda la pantalla */
+    }
+}
+
+/* Estilo para los textos sobre las imágenes (Caption) */
+.carousel-caption {
+    /* Degradado de azul a morado que querías, de arriba a abajo */
+    background: rgba(0, 0, 0, 0.6); /* Fondo negro con 60% de transparencia */
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    padding: 2rem;
+    text-align: center;
+}
+
+/* Mejoramos la visibilidad de los títulos en el carrusel */
+.carousel-caption h2 {
+    color: #ffffff !important; /* Blanco puro para que resalte sobre el degradado */
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.8); /* Sombra para que se lea perfecto */
+}
+
+.carousel-caption p {
+    color: #82c5f2 !important;
+    font-size: 1rem;
+}
+
+/* 13) RESPONSIVIDAD (TABLETS Y PC) */ 
+
+/* Tablets (desde 768px de ancho) */
+@media screen and (min-width: 768px) {
+    .cards { grid-template-columns: repeat(2, 1fr); } /* Pasa a 2 columnas de tarjetas */
+    .nav__list { flex-direction: row; justify-content: center; gap: 2rem; } /* Menú horizontal */
+}
+
+/* PC (desde 1024px de ancho) */
+@media screen and (min-width: 1024px) {
+    .layout {
+        grid-template-columns: 280px 1fr; /* Define columna fija para menú y el resto para contenido */
+        grid-template-areas: "nav main"; /* Menú a la izquierda, contenido a la derecha */
+    }
+    .sidebar {
+        height: 100vh;                       /* Ocupa todo el alto de la pantalla */
+        position: sticky;                    /* Se queda fijo mientras haces scroll */
+        top: 0;                              /* Se pega al borde superior */
+        border-right: 1px solid #2B3753;     /* Línea divisoria derecha */
+        border-bottom: none;                 /* Quita la línea inferior que usaba en móvil */
+        display: flex;                       /* Centra el menú verticalmente */
+        flex-direction: column; 
+        justify-content: center;
+    }
+    .cards { 
+        grid-template-columns: repeat(3, 1fr); /* Pasa a 3 columnas en pantallas grandes */
+        max-width: 1200px;                     /* Evita que las tarjetas se estiren demasiado */
+    }
+    .nav__list { 
+        flex-direction: column; /* Vuelve a vertical dentro de la barra lateral de PC */
+    }
+}
