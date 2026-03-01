@@ -1,6 +1,8 @@
 import React from 'react';
 
+// Componente de pie de página con información de contacto y créditos finales
 const Footer = () => {
+  // Renderizamos el pie de página con un diseño oscuro, centrado y con un borde superior. Incluye los créditos finales y un enlace de contacto por correo electrónico.
   return (
     <footer id="contacto" className="bg-dark text-center py-5 border-top border-secondary mt-5">
       <div className="container">
@@ -26,4 +28,5 @@ const Footer = () => {
   );
 };
 
+// Exportamos el componente Footer para que pueda ser utilizado en otras partes de la aplicación, como en App.jsx.
 export default Footer;

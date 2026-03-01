@@ -1,49 +1,66 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Item from './Item';
 
-// CIRUGÍA: Agregamos 'carrito' y 'agregarAlCarrito' a las props que recibe el contenedor
-const ItemListContainer = ({ tipo = 'ventas', carrito, agregarAlCarrito }) => {
-    const [productos, setProductos] = useState([]);
-    const [cargando, setCargando] = useState(true);
-
-    useEffect(() => {
-        setCargando(true); // Reiniciamos el estado de carga al cambiar de tipo
-        const archivo = `/assets/data/${tipo}.json`; 
-
-        fetch(archivo)
-            .then(res => res.json())
-            .then(data => {
-                setProductos(data);
-                setCargando(false);
-            })
-            .catch(err => {
-                console.error("Error en el trasplante de datos:", err);
-                setCargando(false);
-            });
-    }, [tipo]);
+// El componente ItemListContainer es un "contenedor inteligente" que recibe los datos ya procesados por App.js, lo que simplifica su lógica interna y mejora la separación de responsabilidades.
+const ItemListContainer = ({ 
+    tipo = 'ventas', 
+    productos = [], // 💉 ¡NUEVO! Recibe los datos procesados por App.js
+    carrito, 
+    agregarAlCarrito, 
+    eliminarDelCarrito, 
+    vaciarCarrito, 
+    totalCompra, 
+    realizarCompra 
+}) => {
 
     return (
-        <div className="container mt-4">
-            <h2 className="text-info text-uppercase border-bottom border-info mb-4">
-                Sección: {tipo}
-            </h2>
+        /* 1. Contenedor principal centrado con padding vertical (py-5) */
+        <div className="container py-5"> 
+            
+            {/* 2. ENCABEZADO DE SECCIÓN: Título y controles del carrito */}
+            <div className="d-flex justify-content-between align-items-center border-bottom border-info mb-5 pb-3">
+                <h2 className="text-info text-uppercase mb-0">
+                    Sección: {tipo}
+                </h2>
+                
+                {/* Renderizado Condicional: Botones de compra rápida (Solo en tienda y si hay items) */}
+                {tipo === 'ventas' && carrito.length > 0 && (
+                    <div className="d-flex align-items-center gap-3 animate__animated animate__fadeInRight">
+                        <div className="text-end me-2">
+                            <span className="text-secondary small d-block">Total acumulado:</span>
+                            <span className="text-success fw-bold fs-4">${totalCompra.toLocaleString()}</span>
+                        </div>
 
-            {/* Renderizado condicional para el estado de carga */}
-            {cargando ? (
-                <div className="text-center text-info my-5">
-                    <div className="spinner-border" role="status"></div>
-                    <p className="mt-2">Cargando contenido...</p>
+                        <div className="btn-group">
+                            <button className="btn btn-success fw-bold" onClick={realizarCompra}>
+                                <i className="bi bi-cash-stack"></i> Comprar
+                            </button>
+                            <button className="btn btn-outline-danger fw-bold" onClick={vaciarCarrito}>
+                                <i className="bi bi-trash"></i> Vaciar
+                            </button>
+                        </div>
+                    </div>
+                )}
+            </div>
+
+            {/* 3. CUERPO PRINCIPAL: Renderizado condicional basado en los datos de App.js */}
+            {productos.length === 0 ? (
+                /* Si el arreglo viene vacío, asumimos que App.js está en el segundo de "espera" simulando la red */
+                <div className="text-center text-info my-5 py-5">
+                    <div className="spinner-border" role="status" style={{ width: '3rem', height: '3rem' }}></div>
+                    <p className="mt-3 fs-5 fw-bold">Cargando tesoros de la base de datos...</p>
                 </div>
             ) : (
-                <div className="row">
+                /* Si ya llegaron los datos, dibujamos la grilla de tarjetas */
+                <div className="row g-4"> 
                     {productos.map(prod => (
                         <Item 
                             key={prod.id} 
                             producto={prod} 
                             tipo={tipo} 
-                            // PASO FINAL: Le entregamos las herramientas a cada Item
                             carrito={carrito}
                             agregarAlCarrito={agregarAlCarrito}
+                            eliminarDelCarrito={eliminarDelCarrito}
                         />
                     ))}
                 </div>

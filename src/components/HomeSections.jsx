@@ -1,6 +1,9 @@
 import React from 'react';
 
+// Componente para mostrar las secciones principales en la página de inicio, con botones para navegar a cada sección
 const HomeSections = ({ setSeccion }) => {
+
+  // Renderizamos dos tarjetas para las secciones de Videojuegos y Anime, cada una con un botón que actualiza la sección actual al hacer clic
   return (
     <main className="container my-5 text-center">
       <h1 className="display-5 fw-bold text-info mb-4">Explora el Contenido</h1>
@@ -24,4 +27,5 @@ const HomeSections = ({ setSeccion }) => {
   );
 };
 
+// Exportamos el componente para que pueda ser utilizado en otras partes de la aplicación, como en App.jsx
 export default HomeSections;

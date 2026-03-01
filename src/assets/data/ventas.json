@@ -1,0 +1,167 @@
+[
+    {
+        "id": 1,
+        "titulo": "Estatua Zenki",
+        "precio": 45000,
+        "precioAnterior": 55000,
+        "descripcion": "Figura coleccionable de Zenki en postura de ataque con detalles en relieve de alta calidad.",
+        "imagen": "assets/imagenes/figura_zenki.jpg",
+        "altText": "Figura coleccionable de Zenki en postura de ataque con detalles en relieve"
+    },
+    {
+        "id": 2,
+        "titulo": "Estatua EVA-01 Test Type",
+        "precio": 85000,
+        "precioAnterior": 100000,
+        "descripcion": "Estatua metálica del EVA-01 de Evangelion sobre base de NERV, edición especial.",
+        "imagen": "assets/imagenes/figura_eca01.webp",
+        "altText": "Estatua metálica del EVA-01 de Evangelion sobre base de NERV"
+    },
+    {
+        "id": 3,
+        "titulo": "Nendoroid Hornet - Silksong",
+        "precio": 35000,
+        "descripcion": "Figura articulada Nendoroid de Hornet con su aguja y accesorios intercambiables.",
+        "imagen": "assets/imagenes/figura_hornet.webp",
+        "altText": "Figura articulada Nendoroid de Hornet con su aguja y accesorios"
+    },
+    {
+        "id": 4,
+        "titulo": "Set Cartas Estan Arrestados",
+        "precio": 55000,
+        "descripcion": "Colección exclusiva de cartas de Miyuki Kobayakawa con ilustraciones detalladas de la serie.",
+        "imagen": "assets/imagenes/figura_police.webp",
+        "altText": "Cartas coleccionables de Miyuki Kobayakawa en uniforme de policía"
+    },
+    {
+        "id": 5,
+        "titulo": "Figura Rei Ayanami - Plugsuit Ver.",
+        "precio": 52000,
+        "descripcion": "Figura de Rei Ayanami con su traje de piloto negro, sentada sobre el resto del EVA-00.",
+        "imagen": "assets/imagenes/figura_rei.jpg",
+        "altText": "Figura de Rei Ayanami con su traje de piloto negro"
+    },
+    {
+        "id": 6,
+        "titulo": "The Knight - Estatua Hollow Knight",
+        "precio": 28000,
+        "descripcion": "Figura detallada del Caballero de Hollow Knight sosteniendo su aguijón de hueso característico.",
+        "imagen": "assets/imagenes/figura_knight.webp",
+        "altText": "Figura del Caballero de Hollow Knight sosteniendo su aguijón"
+    },
+    {
+        "id": 7,
+        "titulo": "Figura Articulada Kyo Kusanagi",
+        "precio": 65000,
+        "descripcion": "Figura de acción de Kyo Kusanagi (KOF) con efectos de llamas traslúcidas en las manos.",
+        "imagen": "assets/imagenes/figura_kyo.avif",
+        "altText": "Figura de acción de Kyo Kusanagi con efectos de llamas"
+    },
+    {
+        "id": 8,
+        "titulo": "Link: Breath of the Wild PVC",
+        "precio": 75000,
+        "descripcion": "Figura de Link apuntando con el arco ancestral, inspirada en el arte oficial de BotW.",
+        "imagen": "assets/imagenes/figura_link_botw.webp",
+        "altText": "Figura de Link apuntando con el arco ancestral"
+    },
+    {
+        "id": 9,
+        "titulo": "Figura Asuka Langley - Test Suit",
+        "precio": 58000,
+        "descripcion": "Figura de Asuka con el traje de prueba naranja visto en las películas Rebuild of Evangelion.",
+        "imagen": "assets/imagenes/figura_asuka.webp",
+        "altText": "Figura de Asuka Langley con su traje de piloto naranja"
+    },
+    {
+        "id": 10,
+        "titulo": "Quirrel - Miniatura Coleccionable",
+        "precio": 22000,
+        "descripcion": "Pequeña figura de Quirrel de Hollow Knight, ideal para exhibición en escritorio.",
+        "imagen": "assets/imagenes/figura_quirrel.webp",
+        "altText": "Pequeña figura de Quirrel de Hollow Knight"
+    },
+    {
+        "id": 11,
+        "titulo": "Mai Shiranui - Edición Aniversario",
+        "precio": 95000,
+        "descripcion": "Estatua de lujo de Mai Shiranui en su pose clásica de combate con abanico.",
+        "imagen": "assets/imagenes/figura_mai.jpg",
+        "altText": "Estatua detallada de Mai Shiranui sosteniendo su abanico"
+    },
+    {
+        "id": 12,
+        "titulo": "Figura Mewtwo con efectos LED",
+        "precio": 110000,
+        "precioAnterior": 135000,
+        "descripcion": "Figura premium de Mewtwo con base iluminada y efecto de ataque bola sombra.",
+        "imagen": "assets/imagenes/figura_mewtwo.avif",
+        "altText": "Figura de Mewtwo con iluminación LED real"
+    },
+    {
+        "id": 13,
+        "titulo": "Terry Bogard - Classic Ver.",
+        "precio": 62000,
+        "descripcion": "Figura de acción del legendario Terry Bogard con su atuendo de Fatal Fury.",
+        "imagen": "assets/imagenes/figura_terry.jpg",
+        "altText": "Figura de Terry Bogard con su gorra roja"
+    },
+    {
+        "id": 14,
+        "titulo": "Zelda: Twilight Princess Edition",
+        "precio": 82000,
+        "descripcion": "Figura de colección de la Princesa Zelda basada en el diseño de Twilight Princess.",
+        "imagen": "assets/imagenes/figura_zelda_tp.avif",
+        "altText": "Figura de Zelda versión Twilight Princess"
+    },
+    {
+        "id": 15,
+        "titulo": "Figura 'Están Arrestados'",
+        "precio": 12000,
+        "precioAnterior": 18000,
+        "descripcion": "Mini figura conmemorativa de las oficiales de policía más famosas del anime.",
+        "imagen": "assets/imagenes/figura_mini_police.webp",
+        "altText": "Mini figura coleccionable en uniforme de policía"
+    },
+    {
+        "id": 16,
+        "titulo": "Figura Alucard - Castlevania",
+        "precio": 88000,
+        "descripcion": "Impresionante figura de Alucard basada en la serie de Netflix, con capa fluida.",
+        "imagen": "assets/imagenes/figura_alucard.jpg",
+        "altText": "Figura de Alucard con su capa y espada"
+    },
+    {
+        "id": 17,
+        "titulo": "Estatua Malenia - Elden Ring",
+        "precio": 125000,
+        "precioAnterior": 150000,
+        "descripcion": "Estatua de Malenia, la Espada de Miquella, con lujo de detalles en su armadura y prótesis.",
+        "imagen": "assets/imagenes/figura_malenia.jpg",
+        "altText": "Estatua detallada de Malenia de Elden Ring"
+    },
+    {
+        "id": 18,
+        "titulo": "Nendoroid Kirby - 30th Anniversary",
+        "precio": 42000,
+        "descripcion": "Edición especial de Kirby con múltiples caras magnéticas y accesorios de aniversario.",
+        "imagen": "assets/imagenes/figura_kirby.jpg",
+        "altText": "Figura redonda de Kirby con expresiones magnéticas"
+    },
+    {
+        "id": 19,
+        "titulo": "Figura Samus Aran - Metroid Dread",
+        "precio": 78000,
+        "descripcion": "Samus Aran con el nuevo traje de Metroid Dread, incluye base decorativa.",
+        "imagen": "assets/imagenes/figura_samus.webp",
+        "altText": "Figura de Samus con su traje de Metroid Dread"
+    },
+    {
+        "id": 20,
+        "titulo": "Figura Yusuke Urameshi - YuYu Hakusho",
+        "precio": 55000,
+        "descripcion": "Figura clásica de Yusuke realizando el Reigun, con efectos de energía azul.",
+        "imagen": "assets/imagenes/figura_yusuke.webp",
+        "altText": "Figura de Yusuke preparando su técnica Rayo de Espíritu"
+    }
+]
